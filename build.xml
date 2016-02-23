@@ -1,0 +1,14 @@
+<project name="CHOP_CA_APPLICATION" default="init" basedir=".">
+	<!-- 為build文件設定全域性屬性 可看成變數宣告-->
+	<property name="src" location="YSH\OA\P16_CHOP_CA_APPLICATION" />
+	<property name="test1" location="Y:\babylon\ysphr\YSH\OA\P16_CHOP_CA_APPLICATION" />
+	<target name="init">
+		<!--建立來源和目的資料路徑即可 fileset表示多數檔案  -->
+		<copy encoding="UTF-8" includeemptydirs="false" todir="Y:\babylon\ysphr\YSH\OA\P16_CHOP_CA_APPLICATION">
+			<fileset dir="YSH\OA\P16_CHOP_CA_APPLICATION">
+				<!--<exclude name="**/*.class"/>-->
+			</fileset>
+		</copy>
+	</target>
+</project>
+
