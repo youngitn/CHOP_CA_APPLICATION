@@ -32,40 +32,13 @@ public class AddRun extends hproc {
 	 * @throws Throwable
 	 */
 	private void doAdd() throws Throwable {
-		
-		int chk = 0;
-		for (int i = 1; i <= 3; i++) {
-			System.out.println("CHOP"+Integer.toString(i) +"_NO");
-			if(getValue("CHOP"+Integer.toString(i) +"_NO").trim().length() > 0){
-				System.out.println("in");
-				if (getValue("CHOP"+Integer.toString(i)+"_TODO").trim().isEmpty()||
-					getValue("CHOP"+Integer.toString(i)+"_PROCESS_DEPT").trim().isEmpty()||
-					getValue("CHOP"+Integer.toString(i)+"_SIGN_LV").trim().isEmpty()){
-					System.out.println("in2");
-					chk++;
-				}
-			}
-		}
-		
+			
 		
 		
 		if (!getValue("PNO").trim().isEmpty()) {
 			message("該表單已存在,請重起新單！");
 		}else if (getValue("CHOP_COMPANY").trim().isEmpty()) {
-			message("請選擇印章公司別！");
-		}else if (getValue("CHOP1_NO").trim().isEmpty()) {
-			message("請選擇印章編號！");
-		}else if (getValue("CHOP1_SIGN_LV").trim().isEmpty()) {
-			message("請選擇核決權限！");
-		}else if (getValue("CHOP_USER").trim().isEmpty()) {
-			message("請選擇用印人！");
-		}else if (getValue("CHOP1_PROCESS_DEPT").trim().isEmpty()){
-			message("請選擇承辦單位！");
-		}else if (getValue("CHOP1_TODO").trim().isEmpty()){
-			message("請選擇用途類別！");
-		}else if (chk > 0){
-			message("請檢查已選擇印章編號的相關欄位是否輸入完整!");
-			System.out.println("chk > 0");
+			message("印章/電子憑證公司別！");
 		}else {
 			
 			String pno = getPNO(getToday("YYYYmmdd"), "CHOP_APPLICATION");
@@ -73,78 +46,47 @@ public class AddRun extends hproc {
 			setValue("PNO", pno);
 
 			talk t = getTalk();
-			String sql = "Insert into CHOP_APPLICATION (PNO,"
-					+ "EMPID,"
-					+ "CPNYID,"
-					+ "APP_TYPE,"
-					+ "CHOP_COMPANY,"
-					+ "CHANGE_TYPE,"
-					+ "CHOP1_NO,"
-					+ "CHOP1_TODO,"
-					+ "CHOP1_PROCESS_DEPT,"
-					+ "CHOP1_SIGN_LV,"
-					+ "CHOP1_NOTE,"
-					+ "CHOP2_NO,"
-					+ "CHOP2_TODO,"
-					+ "CHOP2_PROCESS_DEPT,"
-					+ "CHOP2_SIGN_LV,"
-					+ "CHOP2_NOTE,"
-					+ "CHOP3_NO,"
-					+ "CHOP3_TODO,"
-					+ "CHOP3_PROCESS_DEPT,"
-					+ "CHOP3_SIGN_LV,"
-					+ "CHOP3_NOTE,"
-					+ "CHOP_USER,"
-					+ "NOTE,"
-					+ "DATE"
+			String sql = "Insert into CHOP_CA_APPLICATION (PNO, DATE, CPNYID, EMPID, APP_TYPE, CHOP_COMPANY, ORIG_KEEPER, CHOP_NO, MATERIAL, CHOP_TYPE, CHANGE_REASON, NEW_KEEPER, CHOP_TODO, CHOP_ITEM, ACT_DESTROY_DATE, DESTROY_TYPE, TO_DESTROY, TO_DESTROY_WATCH, NOTE, CHOP_FORM"
 					+ ") VALUES ('"
 					+ getValue("PNO")
 					+ "','"
-					+ getValue("EMPID")
+					+ getValue("DATE")
 					+ "','"
 					+ getValue("CPNYID")
+					+ "','"
+					+ getValue("EMPID")
 					+ "','"
 					+ getValue("APP_TYPE")
 					+ "','"
 					+ getValue("CHOP_COMPANY")
 					+ "','"
-					+ getValue("CHANGE_TYPE")
+					+ getValue("ORIG_KEEPER")
 					+ "','"
-					+ getValue("CHOP1_NO") 
+					+ getValue("CHOP_NO") 
 					+ "','"
-					+ getValue("CHOP1_TODO")
+					+ getValue("MATERIAL")
 					+ "','"
-					+ getValue("CHOP1_PROCESS_DEPT")
+					+ getValue("CHOP_TYPE")
 					+ "','"
-					+ getValue("CHOP1_SIGN_LV")
+					+ getValue("CHANGE_REASON")
 					+ "','"
-					+ getValue("CHOP1_NOTE")
+					+ getValue("NEW_KEEPER")
 					+ "','"
-					+ getValue("CHOP2_NO")
+					+ getValue("CHOP_TODO")
 					+ "','"
-					+ getValue("CHOP2_TODO")
+					+ getValue("CHOP_ITEM")
 					+ "','"
-					+ getValue("CHOP2_PROCESS_DEPT")
+					+ getValue("ACT_DESTROY_DATE")
 					+ "','"
-					+ getValue("CHOP2_SIGN_LV")
+					+ getValue("DESTROY_TYPE")
 					+ "','"
-					+ getValue("CHOP2_NOTE") 
+					+ getValue("TO_DESTROY") 
 					+ "','"			
-					+ getValue("CHOP3_NO")
-					+ "','"
-					+ getValue("CHOP3_TODO")
-					+ "','"
-					+ getValue("CHOP3_PROCESS_DEPT")
-					+ "','"
-					+ getValue("CHOP3_SIGN_LV")
-					+ "','"
-					+ getValue("CHOP3_NOTE")
-					+ "','"
-					+ getValue("CHOP_USER")
+					+ getValue("TO_DESTROY_WATCH")
 					+ "','"
 					+ getValue("NOTE")
 					+ "','"
-					+ getValue("DATE")					
+					+ getValue("CHOP_FORM")				
 					+ "')";
 			String now = getNow();
 			String MUSER = getUser();
@@ -158,7 +100,7 @@ public class AddRun extends hproc {
 			// SIGN_LV = "總經理";
 			// }
 
-			String sc1 = "insert into CHOP_APPLICATION_FLOWC (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"
+			String sc1 = "insert into CHOP_CA_APPLICATION_FLOWC (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"
 					+ pno
 					+ "','"
 					+ SIGN_LV
@@ -167,9 +109,9 @@ public class AddRun extends hproc {
 					+ "','"
 					+ now
 					+ "','" + SIGN_LV + "')";
-			String sc2 = "insert into CHOP_APPLICATION_FLOWC_HIS (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"
+			String sc2 = "insert into CHOP_CA_APPLICATION_FLOWC_HIS (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"
 					+ pno + "','待處理','" + MUSER + "','" + now + "','待處理')";
-			String sc3 = "insert into CHOP_APPLICATION_FLOWC_HIS (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"
+			String sc3 = "insert into CHOP_CA_APPLICATION_FLOWC_HIS (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"
 					+ pno + "','直屬主管','" + MUSER + "','" + now + "','')";
 			// String
 			// sc3="insert into E_SALARY_SIGN_FLOWC_HIS (PNO,F_INP_STAT,F_INP_ID,F_INP_TIME,F_INP_INFO) values ('"+pno+"','單位主管','"+MUSER+"','"+now+"','')";
@@ -218,7 +160,7 @@ public class AddRun extends hproc {
 		String[] usr = { getEmail(reEmpId) };
 		String title1 = "";
 		String name = getName(empid);
-		String title = "主旨：(" + empid + ")" + name + "用印項目暨核決權限申請表，請進入系統簽核"
+		String title = "主旨：(" + empid + ")" + name + "印章及電子憑證申請單，請進入系統簽核"
 				+ title1.trim();
 		String content = "請進入 eHR 系統簽核( <a href=\"" + HRADDR[0][0].trim()
 				+ "\">按此連結</a>)<br>";

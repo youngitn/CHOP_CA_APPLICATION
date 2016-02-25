@@ -1,357 +1,231 @@
 package YSH.OA.P16_CHOP_CA_APPLICATION;
 
-
 public class CHOP_CA_APPLICATION_BEAN {
-	
 	private String PNO;
+	private String DATE;
 	private String CPNYID;
 	private String EMPID;
 	private String APP_TYPE;
 	private String CHOP_COMPANY;
-	private String CHANGE_TYPE;
-	private String CHOP1_NO;
-	private String CHOP1_TODO;
-	private String CHOP1_PROCESS_DEPT;
-	private String CHOP1_SIGN_LV;
-	private String CHOP1_NOTE;
-	private String CHOP2_NO;
-	private String CHOP2_TODO;
-	private String CHOP2_PROCESS_DEPT;
-	private String CHOP2_SIGN_LV;
-	private String CHOP2_NOTE;
-	private String CHOP3_NO;
-	private String CHOP3_TODO;
-	private String CHOP3_PROCESS_DEPT;
-	private String CHOP3_SIGN_LV;
-	private String CHOP3_NOTE;
-	private String CHOP_USER;
+	private String ORIG_KEEPER;
+	private String CHOP_NO;
+	private String MATERIAL;
+	private String CHOP_TYPE;
+	private String CHANGE_REASON;
+	private String NEW_KEEPER;
+	private String CHOP_TODO;
+	private String CHOP_ITEM;
+	private String ACT_DESTROY_DATE;
+	private String DESTROY_TYPE;
+	private String TO_DESTROY;
+	private String TO_DESTROY_WATCH;
 	private String NOTE;
-	private String DATE;
+	private String CHOP_FORM;
+
 	
-	
-	
-	public CHOP_CA_APPLICATION_BEAN(String pNO, String cPNYID, String eMPID,
-			String aPP_TYPE, String cHOP_COMPANY, String cHANGE_TYPE,
-			String cHOP1_NO, String cHOP1_TODO, String cHOP1_PROCESS_DEPT,
-			String cHOP1_SIGN_LV, String cHOP1_NOTE, String cHOP2_NO,
-			String cHOP2_TODO, String cHOP2_PROCESS_DEPT, String cHOP2_SIGN_LV,
-			String cHOP2_NOTE, String cHOP3_NO, String cHOP3_TODO,
-			String cHOP3_PROCESS_DEPT, String cHOP3_SIGN_LV, String cHOP3_NOTE,
-			String cHOP_USER, String nOTE, String dATE) {
+	public CHOP_CA_APPLICATION_BEAN(String pNO, String dATE, String cPNYID,
+			String eMPID, String aPP_TYPE, String cHOP_COMPANY,
+			String oRIG_KEEPER, String cHOP_NO, String mATERIAL,
+			String cHOP_TYPE, String cHANGE_REASON, String nEW_KEEPER,
+			String cHOP_TODO, String cHOP_ITEM, String aCT_DESTROY_DATE,
+			String dESTROY_TYPE, String tO_DESTROY, String tO_DESTROY_WATCH,
+			String nOTE, String cHOP_FORM) {
 		super();
 		PNO = pNO;
-		CPNYID = cPNYID;
-		EMPID = eMPID;
-		APP_TYPE = aPP_TYPE;
-		CHOP_COMPANY = cHOP_COMPANY;
-		CHANGE_TYPE = cHANGE_TYPE;
-		CHOP1_NO = cHOP1_NO;
-		CHOP1_TODO = cHOP1_TODO;
-		CHOP1_PROCESS_DEPT = cHOP1_PROCESS_DEPT;
-		CHOP1_SIGN_LV = cHOP1_SIGN_LV;
-		CHOP1_NOTE = cHOP1_NOTE;
-		CHOP2_NO = cHOP2_NO;
-		CHOP2_TODO = cHOP2_TODO;
-		CHOP2_PROCESS_DEPT = cHOP2_PROCESS_DEPT;
-		CHOP2_SIGN_LV = cHOP2_SIGN_LV;
-		CHOP2_NOTE = cHOP2_NOTE;
-		CHOP3_NO = cHOP3_NO;
-		CHOP3_TODO = cHOP3_TODO;
-		CHOP3_PROCESS_DEPT = cHOP3_PROCESS_DEPT;
-		CHOP3_SIGN_LV = cHOP3_SIGN_LV;
-		CHOP3_NOTE = cHOP3_NOTE;
-		CHOP_USER = cHOP_USER;
-		NOTE = nOTE;
 		DATE = dATE;
-	}
-	
-	/**
-	 * @return the pNO
-	 */
-	public String getPNO() {
-		return PNO;
-	}
-	/**
-	 * @param pNO the pNO to set
-	 */
-	public void setPNO(String pNO) {
-		PNO = pNO;
-	}
-	/**
-	 * @return the cPNYID
-	 */
-	public String getCPNYID() {
-		return CPNYID;
-	}
-	/**
-	 * @param cPNYID the cPNYID to set
-	 */
-	public void setCPNYID(String cPNYID) {
 		CPNYID = cPNYID;
-	}
-	/**
-	 * @return the eMPID
-	 */
-	public String getEMPID() {
-		return EMPID;
-	}
-	/**
-	 * @param eMPID the eMPID to set
-	 */
-	public void setEMPID(String eMPID) {
 		EMPID = eMPID;
-	}
-	/**
-	 * @return the aPP_TYPE
-	 */
-	public String getAPP_TYPE() {
-		return APP_TYPE;
-	}
-	/**
-	 * @param aPP_TYPE the aPP_TYPE to set
-	 */
-	public void setAPP_TYPE(String aPP_TYPE) {
 		APP_TYPE = aPP_TYPE;
-	}
-	/**
-	 * @return the cHOP_COMPANY
-	 */
-	public String getCHOP_COMPANY() {
-		return CHOP_COMPANY;
-	}
-	/**
-	 * @param cHOP_COMPANY the cHOP_COMPANY to set
-	 */
-	public void setCHOP_COMPANY(String cHOP_COMPANY) {
 		CHOP_COMPANY = cHOP_COMPANY;
+		ORIG_KEEPER = oRIG_KEEPER;
+		CHOP_NO = cHOP_NO;
+		MATERIAL = mATERIAL;
+		CHOP_TYPE = cHOP_TYPE;
+		CHANGE_REASON = cHANGE_REASON;
+		NEW_KEEPER = nEW_KEEPER;
+		CHOP_TODO = cHOP_TODO;
+		CHOP_ITEM = cHOP_ITEM;
+		ACT_DESTROY_DATE = aCT_DESTROY_DATE;
+		DESTROY_TYPE = dESTROY_TYPE;
+		TO_DESTROY = tO_DESTROY;
+		TO_DESTROY_WATCH = tO_DESTROY_WATCH;
+		NOTE = nOTE;
+		CHOP_FORM = cHOP_FORM;
 	}
-	/**
-	 * @return the cHANGE_TYPE
-	 */
-	public String getCHANGE_TYPE() {
-		return CHANGE_TYPE;
+
+	public String getACT_DESTROY_DATE() {
+		return ACT_DESTROY_DATE;
 	}
-	/**
-	 * @param cHANGE_TYPE the cHANGE_TYPE to set
-	 */
-	public void setCHANGE_TYPE(String cHANGE_TYPE) {
-		CHANGE_TYPE = cHANGE_TYPE;
+
+	public void setACT_DESTROY_DATE(String ACT_DESTROY_DATE) {
+		this.ACT_DESTROY_DATE = ACT_DESTROY_DATE;
 	}
-	/**
-	 * @return the cHOP1_NO
-	 */
-	public String getCHOP1_NO() {
-		return CHOP1_NO;
+
+	public String getORIG_KEEPER() {
+		return ORIG_KEEPER;
 	}
-	/**
-	 * @param cHOP1_NO the cHOP1_NO to set
-	 */
-	public void setCHOP1_NO(String cHOP1_NO) {
-		CHOP1_NO = cHOP1_NO;
+
+	public void setORIG_KEEPER(String ORIG_KEEPER) {
+		this.ORIG_KEEPER = ORIG_KEEPER;
 	}
-	/**
-	 * @return the cHOP1_TODO
-	 */
-	public String getCHOP1_TODO() {
-		return CHOP1_TODO;
+
+	public String getCHOP_NO() {
+		return CHOP_NO;
 	}
-	/**
-	 * @param cHOP1_TODO the cHOP1_TODO to set
-	 */
-	public void setCHOP1_TODO(String cHOP1_TODO) {
-		CHOP1_TODO = cHOP1_TODO;
+
+	public void setCHOP_NO(String CHOP_NO) {
+		this.CHOP_NO = CHOP_NO;
 	}
-	/**
-	 * @return the cHOP1_PROCESS_DEPT
-	 */
-	public String getCHOP1_PROCESS_DEPT() {
-		return CHOP1_PROCESS_DEPT;
-	}
-	/**
-	 * @param cHOP1_PROCESS_DEPT the cHOP1_PROCESS_DEPT to set
-	 */
-	public void setCHOP1_PROCESS_DEPT(String cHOP1_PROCESS_DEPT) {
-		CHOP1_PROCESS_DEPT = cHOP1_PROCESS_DEPT;
-	}
-	/**
-	 * @return the cHOP1_SIGN_LV
-	 */
-	public String getCHOP1_SIGN_LV() {
-		return CHOP1_SIGN_LV;
-	}
-	/**
-	 * @param cHOP1_SIGN_LV the cHOP1_SIGN_LV to set
-	 */
-	public void setCHOP1_SIGN_LV(String cHOP1_SIGN_LV) {
-		CHOP1_SIGN_LV = cHOP1_SIGN_LV;
-	}
-	/**
-	 * @return the cHOP1_NOTE
-	 */
-	public String getCHOP1_NOTE() {
-		return CHOP1_NOTE;
-	}
-	/**
-	 * @param cHOP1_NOTE the cHOP1_NOTE to set
-	 */
-	public void setCHOP1_NOTE(String cHOP1_NOTE) {
-		CHOP1_NOTE = cHOP1_NOTE;
-	}
-	/**
-	 * @return the cHOP2_NO
-	 */
-	public String getCHOP2_NO() {
-		return CHOP2_NO;
-	}
-	/**
-	 * @param cHOP2_NO the cHOP2_NO to set
-	 */
-	public void setCHOP2_NO(String cHOP2_NO) {
-		CHOP2_NO = cHOP2_NO;
-	}
-	/**
-	 * @return the cHOP2_TODO
-	 */
-	public String getCHOP2_TODO() {
-		return CHOP2_TODO;
-	}
-	/**
-	 * @param cHOP2_TODO the cHOP2_TODO to set
-	 */
-	public void setCHOP2_TODO(String cHOP2_TODO) {
-		CHOP2_TODO = cHOP2_TODO;
-	}
-	/**
-	 * @return the cHOP2_PROCESS_DEPT
-	 */
-	public String getCHOP2_PROCESS_DEPT() {
-		return CHOP2_PROCESS_DEPT;
-	}
-	/**
-	 * @param cHOP2_PROCESS_DEPT the cHOP2_PROCESS_DEPT to set
-	 */
-	public void setCHOP2_PROCESS_DEPT(String cHOP2_PROCESS_DEPT) {
-		CHOP2_PROCESS_DEPT = cHOP2_PROCESS_DEPT;
-	}
-	/**
-	 * @return the cHOP2_SIGN_LV
-	 */
-	public String getCHOP2_SIGN_LV() {
-		return CHOP2_SIGN_LV;
-	}
-	/**
-	 * @param cHOP2_SIGN_LV the cHOP2_SIGN_LV to set
-	 */
-	public void setCHOP2_SIGN_LV(String cHOP2_SIGN_LV) {
-		CHOP2_SIGN_LV = cHOP2_SIGN_LV;
-	}
-	/**
-	 * @return the cHOP2_NOTE
-	 */
-	public String getCHOP2_NOTE() {
-		return CHOP2_NOTE;
-	}
-	/**
-	 * @param cHOP2_NOTE the cHOP2_NOTE to set
-	 */
-	public void setCHOP2_NOTE(String cHOP2_NOTE) {
-		CHOP2_NOTE = cHOP2_NOTE;
-	}
-	/**
-	 * @return the cHOP3_NO
-	 */
-	public String getCHOP3_NO() {
-		return CHOP3_NO;
-	}
-	/**
-	 * @param cHOP3_NO the cHOP3_NO to set
-	 */
-	public void setCHOP3_NO(String cHOP3_NO) {
-		CHOP3_NO = cHOP3_NO;
-	}
-	/**
-	 * @return the cHOP3_TODO
-	 */
-	public String getCHOP3_TODO() {
-		return CHOP3_TODO;
-	}
-	/**
-	 * @param cHOP3_TODO the cHOP3_TODO to set
-	 */
-	public void setCHOP3_TODO(String cHOP3_TODO) {
-		CHOP3_TODO = cHOP3_TODO;
-	}
-	/**
-	 * @return the cHOP3_PROCESS_DEPT
-	 */
-	public String getCHOP3_PROCESS_DEPT() {
-		return CHOP3_PROCESS_DEPT;
-	}
-	/**
-	 * @param cHOP3_PROCESS_DEPT the cHOP3_PROCESS_DEPT to set
-	 */
-	public void setCHOP3_PROCESS_DEPT(String cHOP3_PROCESS_DEPT) {
-		CHOP3_PROCESS_DEPT = cHOP3_PROCESS_DEPT;
-	}
-	/**
-	 * @return the cHOP3_SIGN_LV
-	 */
-	public String getCHOP3_SIGN_LV() {
-		return CHOP3_SIGN_LV;
-	}
-	/**
-	 * @param cHOP3_SIGN_LV the cHOP3_SIGN_LV to set
-	 */
-	public void setCHOP3_SIGN_LV(String cHOP3_SIGN_LV) {
-		CHOP3_SIGN_LV = cHOP3_SIGN_LV;
-	}
-	/**
-	 * @return the cHOP3_NOTE
-	 */
-	public String getCHOP3_NOTE() {
-		return CHOP3_NOTE;
-	}
-	/**
-	 * @param cHOP3_NOTE the cHOP3_NOTE to set
-	 */
-	public void setCHOP3_NOTE(String cHOP3_NOTE) {
-		CHOP3_NOTE = cHOP3_NOTE;
-	}
-	/**
-	 * @return the cHOP_USER
-	 */
-	public String getCHOP_USER() {
-		return CHOP_USER;
-	}
-	/**
-	 * @param cHOP_USER the cHOP_USER to set
-	 */
-	public void setCHOP_USER(String cHOP_USER) {
-		CHOP_USER = cHOP_USER;
-	}
-	/**
-	 * @return the nOTE
-	 */
+
 	public String getNOTE() {
 		return NOTE;
 	}
-	/**
-	 * @param nOTE the nOTE to set
-	 */
-	public void setNOTE(String nOTE) {
-		NOTE = nOTE;
+
+	public void setNOTE(String NOTE) {
+		this.NOTE = NOTE;
 	}
-	/**
-	 * @return the dATE
-	 */
+
+	public String getCHANGE_REASON() {
+		return CHANGE_REASON;
+	}
+
+	public void setCHANGE_REASON(String CHANGE_REASON) {
+		this.CHANGE_REASON = CHANGE_REASON;
+	}
+
+	public String getTO_DESTROY() {
+		return TO_DESTROY;
+	}
+
+	public void setTO_DESTROY(String TO_DESTROY) {
+		this.TO_DESTROY = TO_DESTROY;
+	}
+
+	public String getPNO() {
+		return PNO;
+	}
+
+	public void setPNO(String PNO) {
+		this.PNO = PNO;
+	}
+
+	public String getCHOP_COMPANY() {
+		return CHOP_COMPANY;
+	}
+
+	public void setCHOP_COMPANY(String CHOP_COMPANY) {
+		this.CHOP_COMPANY = CHOP_COMPANY;
+	}
+
+	public String getCHOP_FORM() {
+		return CHOP_FORM;
+	}
+
+	public void setCHOP_FORM(String CHOP_FORM) {
+		this.CHOP_FORM = CHOP_FORM;
+	}
+
+	public String getDESTROY_TYPE() {
+		return DESTROY_TYPE;
+	}
+
+	public void setDESTROY_TYPE(String DESTROY_TYPE) {
+		this.DESTROY_TYPE = DESTROY_TYPE;
+	}
+
+	public String getEMPID() {
+		return EMPID;
+	}
+
+	public void setEMPID(String EMPID) {
+		this.EMPID = EMPID;
+	}
+
+	public String getMATERIAL() {
+		return MATERIAL;
+	}
+
+	public void setMATERIAL(String MATERIAL) {
+		this.MATERIAL = MATERIAL;
+	}
+
+	public String getCHOP_TODO() {
+		return CHOP_TODO;
+	}
+
+	public void setCHOP_TODO(String CHOP_TODO) {
+		this.CHOP_TODO = CHOP_TODO;
+	}
+
+	public String getTO_DESTROY_WATCH() {
+		return TO_DESTROY_WATCH;
+	}
+
+	public void setTO_DESTROY_WATCH(String TO_DESTROY_WATCH) {
+		this.TO_DESTROY_WATCH = TO_DESTROY_WATCH;
+	}
+
+	public String getAPP_TYPE() {
+		return APP_TYPE;
+	}
+
+	public void setAPP_TYPE(String APP_TYPE) {
+		this.APP_TYPE = APP_TYPE;
+	}
+
 	public String getDATE() {
 		return DATE;
 	}
-	/**
-	 * @param dATE the dATE to set
-	 */
-	public void setDATE(String dATE) {
-		DATE = dATE;
+
+	public void setDATE(String DATE) {
+		this.DATE = DATE;
 	}
-	
+
+	public String getCHOP_ITEM() {
+		return CHOP_ITEM;
+	}
+
+	public void setCHOP_ITEM(String CHOP_ITEM) {
+		this.CHOP_ITEM = CHOP_ITEM;
+	}
+
+	public String getCPNYID() {
+		return CPNYID;
+	}
+
+	public void setCPNYID(String CPNYID) {
+		this.CPNYID = CPNYID;
+	}
+
+	public String getNEW_KEEPER() {
+		return NEW_KEEPER;
+	}
+
+	public void setNEW_KEEPER(String NEW_KEEPER) {
+		this.NEW_KEEPER = NEW_KEEPER;
+	}
+
+	public String getCHOP_TYPE() {
+		return CHOP_TYPE;
+	}
+
+	public void setCHOP_TYPE(String CHOP_TYPE) {
+		this.CHOP_TYPE = CHOP_TYPE;
+	}
+
+	@Override
+	public String toString() {
+		return "ClassPojo [ACT_DESTROY_DATE = " + ACT_DESTROY_DATE
+				+ ", ORIG_KEEPER = " + ORIG_KEEPER + ", CHOP_NO = " + CHOP_NO
+				+ ", NOTE = " + NOTE + ", CHANGE_REASON = " + CHANGE_REASON
+				+ ", TO_DESTROY = " + TO_DESTROY + ", PNO = " + PNO
+				+ ", CHOP_COMPANY = " + CHOP_COMPANY + ", CHOP_FORM = "
+				+ CHOP_FORM + ", DESTROY_TYPE = " + DESTROY_TYPE + ", EMPID = "
+				+ EMPID + ", MATERIAL = " + MATERIAL + ", CHOP_TODO = "
+				+ CHOP_TODO + ", TO_DESTROY_WATCH = " + TO_DESTROY_WATCH
+				+ ", APP_TYPE = " + APP_TYPE + ", DATE = " + DATE
+				+ ", CHOP_ITEM = " + CHOP_ITEM + ", CPNYID = " + CPNYID
+				+ ", NEW_KEEPER = " + NEW_KEEPER + ", CHOP_TYPE = " + CHOP_TYPE
+				+ "]";
+	}
 }

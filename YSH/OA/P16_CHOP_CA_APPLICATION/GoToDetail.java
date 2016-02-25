@@ -10,34 +10,77 @@ public class GoToDetail extends hproc{
 	public String action(String arg0) throws Throwable {
 		// TODO Auto-generated method stub
 		talk t = getTalk();
+		String sql;
+		
+		String HECNAME;
+		String DEP_NAME;
+				
 		CHOP_CA_APPLICATION_DAO dao = new CHOP_CA_APPLICATION_DAO();
 		CHOP_CA_APPLICATION_BEAN bean = dao.getBean(getValue("table1.PNO"),t );
 		
 		setValue("PNO",bean.getPNO());
+		setValue("DATE",bean.getDATE());
+
 		setValue("CPNYID",bean.getCPNYID());
 		setValue("EMPID",bean.getEMPID());
 		setValue("APP_TYPE",bean.getAPP_TYPE());
 		setValue("CHOP_COMPANY",bean.getCHOP_COMPANY());
-		setValue("CHANGE_TYPE",bean.getCHANGE_TYPE());
-		setValue("CHOP1_NO",bean.getCHOP1_NO());
-		setValue("CHOP1_TODO",bean.getCHOP1_TODO());
-		setValue("CHOP1_PROCESS_DEPT",bean.getCHOP1_PROCESS_DEPT());
-		setValue("CHOP1_SIGN_LV",bean.getCHOP1_SIGN_LV());
-		setValue("CHOP1_NOTE",bean.getCHOP1_NOTE());
-		setValue("CHOP2_NO",bean.getCHOP2_NO());
-		setValue("CHOP2_TODO",bean.getCHOP2_TODO());
-		setValue("CHOP2_PROCESS_DEPT",bean.getCHOP2_PROCESS_DEPT());
-		setValue("CHOP2_SIGN_LV",bean.getCHOP2_SIGN_LV());
-		setValue("CHOP2_NOTE",bean.getCHOP2_NOTE());
-		setValue("CHOP3_NO",bean.getCHOP3_NO());
-		setValue("CHOP3_TODO",bean.getCHOP3_TODO());
-		setValue("CHOP3_PROCESS_DEP",bean.getCHOP3_PROCESS_DEPT());
-		setValue("CHOP3_SIGN_LV",bean.getCHOP3_SIGN_LV());
-		setValue("CHOP3_NOTE",bean.getCHOP3_NOTE());
-		setValue("CHOP_USER",bean.getCHOP_USER());
+		setValue("ORIG_KEEPER",bean.getORIG_KEEPER());
+		setValue("CHOP_NO",bean.getCHOP_NO());
+		setValue("MATERIAL",bean.getMATERIAL());
+		setValue("CHOP_TYPE",bean.getCHOP_TYPE());
+		setValue("CHANGE_REASON",bean.getCHANGE_REASON());
+		setValue("NEW_KEEPER",bean.getNEW_KEEPER());
+		setValue("CHOP_TODO",bean.getCHOP_TODO());
+		setValue("CHOP_ITEM",bean.getCHOP_ITEM());
+		setValue("ACT_DESTROY_DATE",bean.getACT_DESTROY_DATE());
+		setValue("DESTROY_TYPE",bean.getDESTROY_TYPE());
+		setValue("TO_DESTROY",bean.getTO_DESTROY());
+		setValue("TO_DESTROY_WATCH",bean.getTO_DESTROY_WATCH());
 		setValue("NOTE",bean.getNOTE());
-		setValue("DATE",bean.getDATE());
+		setValue("CHOP_FORM",bean.getCHOP_FORM());
+		setVisible("SEND", false);
+		setVisible("QUERYPAGE", false);
+		if (bean.getNEW_KEEPER().trim().length() != 0){
+			sql = "select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+bean.getNEW_KEEPER()+"'";
+			String[][] ret = t.queryFromPool(sql);
+
+			HECNAME = ret[0][0];
+			DEP_NAME = ret[0][1];
 			
+			setValue("NEW_KEEPER_NAME",HECNAME);
+			setValue("NEW_KEEPER_DEPT_NAME",DEP_NAME);
+		}
+		if (bean.getEMPID().trim().length() != 0){
+			sql = "select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+bean.getNEW_KEEPER()+"'";
+			String[][] ret = t.queryFromPool(sql);
+
+			HECNAME = ret[0][0];
+			DEP_NAME = ret[0][1];
+			
+			setValue("EMPID_NAME",HECNAME);
+			setValue("DEPT_NO_NAME",DEP_NAME);
+		}
+		if (bean.getTO_DESTROY().trim().length() != 0){
+			sql = "select HECNAME from USER_INFO_VIEW where EMPID = '"+bean.getTO_DESTROY()+"'";
+			String[][] ret = t.queryFromPool(sql);
+
+			HECNAME = ret[0][0];
+			
+			
+			setValue("TO_DESTROY_NAME",HECNAME);
+			
+		}
+		if (bean.getTO_DESTROY_WATCH().trim().length() != 0){
+			sql = "select HECNAME from USER_INFO_VIEW where EMPID = '"+bean.getTO_DESTROY_WATCH()+"'";
+			String[][] ret = t.queryFromPool(sql);
+
+			HECNAME = ret[0][0];
+			
+			setValue("TO_DESTROY_WATCH_NAME",HECNAME);			
+		}
+		
+		
 		return arg0;
 	}
 }
