@@ -3,6 +3,7 @@ package YSH.OA.P16_CHOP_CA_APPLICATION;
 import jcx.db.talk;
 import jcx.jform.hproc;
 
+
 public class SignInit extends hproc{
 
 	@Override
@@ -10,6 +11,17 @@ public class SignInit extends hproc{
 		// TODO Auto-generated method stub
 		String sql,HECNAME,DEP_NAME;
 		talk t = getTalk();
+		if (POSITION == 5){
+			setVisible("SEND", false);
+			setVisible("QUERYPAGE", false);
+			setVisible("CHOP_FORM", false);
+			
+			String FF = getValue("CHOP_FORM");
+			if (FF.trim().length() != 0) {
+				setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:300%\" href=\"" + getDownloadURL(FF.trim())
+						+ "\">憑證樣式附件下載</a><br>");
+			}
+		}
 		if (getValue("NEW_KEEPER").trim().length() != 0){
 			sql = "select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+getValue("NEW_KEEPER")+"'";
 			String[][] ret = t.queryFromPool(sql);
@@ -48,6 +60,15 @@ public class SignInit extends hproc{
 			
 			setValue("TO_DESTROY_WATCH_NAME",HECNAME);			
 		}
+		if (getValue("ORIG_KEEPER").trim().length() != 0){
+			sql = "select HECNAME from USER_INFO_VIEW where EMPID = '"+getValue("ORIG_KEEPER")+"'";
+			String[][] ret = t.queryFromPool(sql);
+
+			HECNAME = ret[0][0];
+			
+			setValue("ORIG_KEEPER_NAME",HECNAME);			
+		}
+		
 		return arg0;
 	}
 

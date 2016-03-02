@@ -3,6 +3,7 @@ package YSH.OA.P16_CHOP_CA_APPLICATION;
 //YSH/OA/P16_CHOP_CA_APPLICATION/AddRun
 import hr.common;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.Vector;
 
@@ -41,10 +42,16 @@ public class AddRun extends hproc {
 			message("印章/電子憑證公司別！");
 		}else {
 			
-			String pno = getPNO(getToday("YYYYmmdd"), "CHOP_APPLICATION");
-
+			String pno = getPNO(getToday("YYYYmmdd"), "CHOP_CA_APPLICATION");
+			String uploadString = "";
 			setValue("PNO", pno);
-
+			if (getValue("CHOP_FORM").trim().length() != 0){
+				File F1 = getUploadFile("CHOP_FORM");
+				if (F1 != null)
+					uploadString = " " + F1 + " ";
+			}
+			System.out.println("------>"+getValue("CHOP_FORM"));
+			
 			talk t = getTalk();
 			String sql = "Insert into CHOP_CA_APPLICATION (PNO, DATE, CPNYID, EMPID, APP_TYPE, CHOP_COMPANY, ORIG_KEEPER, CHOP_NO, MATERIAL, CHOP_TYPE, CHANGE_REASON, NEW_KEEPER, CHOP_TODO, CHOP_ITEM, ACT_DESTROY_DATE, DESTROY_TYPE, TO_DESTROY, TO_DESTROY_WATCH, NOTE, CHOP_FORM"
 					+ ") VALUES ('"
@@ -86,7 +93,7 @@ public class AddRun extends hproc {
 					+ "','"
 					+ getValue("NOTE")
 					+ "','"
-					+ getValue("CHOP_FORM")				
+					+ uploadString				
 					+ "')";
 			String now = getNow();
 			String MUSER = getUser();

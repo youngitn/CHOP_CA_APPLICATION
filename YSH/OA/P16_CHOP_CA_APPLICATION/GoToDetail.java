@@ -39,6 +39,12 @@ public class GoToDetail extends hproc{
 		setValue("TO_DESTROY_WATCH",bean.getTO_DESTROY_WATCH());
 		setValue("NOTE",bean.getNOTE());
 		setValue("CHOP_FORM",bean.getCHOP_FORM());
+		String FF = getValue("CHOP_FORM");
+		if (FF.trim().length() != 0) {
+			setVisible("CHOP_FORM", false);
+			setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:300%\" href=\"" + getDownloadURL(FF.trim())
+					+ "\">憑證樣式附件下載</a><br>");
+		}
 		setVisible("SEND", false);
 		setVisible("QUERYPAGE", false);
 		if (bean.getNEW_KEEPER().trim().length() != 0){
@@ -52,7 +58,7 @@ public class GoToDetail extends hproc{
 			setValue("NEW_KEEPER_DEPT_NAME",DEP_NAME);
 		}
 		if (bean.getEMPID().trim().length() != 0){
-			sql = "select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+bean.getNEW_KEEPER()+"'";
+			sql = "select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+bean.getEMPID()+"'";
 			String[][] ret = t.queryFromPool(sql);
 
 			HECNAME = ret[0][0];
@@ -78,6 +84,14 @@ public class GoToDetail extends hproc{
 			HECNAME = ret[0][0];
 			
 			setValue("TO_DESTROY_WATCH_NAME",HECNAME);			
+		}
+		if (bean.getORIG_KEEPER().trim().length() != 0){
+			sql = "select HECNAME from USER_INFO_VIEW where EMPID = '"+bean.getORIG_KEEPER()+"'";
+			String[][] ret = t.queryFromPool(sql);
+
+			HECNAME = ret[0][0];
+			
+			setValue("ORIG_KEEPER_NAME",HECNAME);			
 		}
 		
 		

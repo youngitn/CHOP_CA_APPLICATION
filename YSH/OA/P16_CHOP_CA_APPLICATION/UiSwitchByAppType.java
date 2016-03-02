@@ -146,7 +146,16 @@ public class UiSwitchByAppType extends hproc {
 		default:
 			break;
 		}
-		
+
+		String[][] rets = t.queryFromPool("select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+getValue("EMPID").trim()+"'");
+
+		String HECNAME = rets[0][0];	
+		String DEP_NAME = rets[0][1];
+
+
+		setValue("EMPID_NAME",HECNAME);
+		setValue("DEPT_NO_NAME",DEP_NAME);
+
 		return arg0;
 	}
 }
