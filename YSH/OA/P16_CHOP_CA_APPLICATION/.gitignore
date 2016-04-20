@@ -7,3 +7,6 @@
 /SignInit.class
 /zxc.class
 /ORIG_KEEPER.class
+/Notify.class
+/SendMailAll.class
+/SendMailAll_WithCondition.class

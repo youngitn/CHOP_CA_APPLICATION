@@ -9,6 +9,7 @@ public class GoToDetail extends hproc{
 	@Override
 	public String action(String arg0) throws Throwable {
 		// TODO Auto-generated method stub
+		
 		talk t = getTalk();
 		String sql;
 		
@@ -29,6 +30,11 @@ public class GoToDetail extends hproc{
 		setValue("CHOP_NO",bean.getCHOP_NO());
 		setValue("MATERIAL",bean.getMATERIAL());
 		setValue("CHOP_TYPE",bean.getCHOP_TYPE());
+		if (bean.getCHOP_TYPE().equals("1")|| bean.getCHOP_TYPE().equals("7")){
+			setVisible("FINANCIAL_DIV", true);
+			setValue("FINANCIAL_DIV",bean.getFINANCIAL_DIV());
+			setValue("F_NAME", getName(bean.getFINANCIAL_DIV()));
+		}
 		setValue("CHANGE_REASON",bean.getCHANGE_REASON());
 		setValue("NEW_KEEPER",bean.getNEW_KEEPER());
 		setValue("CHOP_TODO",bean.getCHOP_TODO());
@@ -42,7 +48,7 @@ public class GoToDetail extends hproc{
 		String FF = getValue("CHOP_FORM");
 		if (FF.trim().length() != 0) {
 			setVisible("CHOP_FORM", false);
-			setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:300%\" href=\"" + getDownloadURL(FF.trim())
+			setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:150%\" href=\"" + getDownloadURL(FF.trim())
 					+ "\">憑證樣式附件下載</a><br>");
 		}
 		setVisible("SEND", false);

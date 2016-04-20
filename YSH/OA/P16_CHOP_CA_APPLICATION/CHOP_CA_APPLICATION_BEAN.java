@@ -21,6 +21,7 @@ public class CHOP_CA_APPLICATION_BEAN {
 	private String TO_DESTROY_WATCH;
 	private String NOTE;
 	private String CHOP_FORM;
+	private String FINANCIAL_DIV;
 
 	
 	public CHOP_CA_APPLICATION_BEAN(String pNO, String dATE, String cPNYID,
@@ -29,7 +30,7 @@ public class CHOP_CA_APPLICATION_BEAN {
 			String cHOP_TYPE, String cHANGE_REASON, String nEW_KEEPER,
 			String cHOP_TODO, String cHOP_ITEM, String aCT_DESTROY_DATE,
 			String dESTROY_TYPE, String tO_DESTROY, String tO_DESTROY_WATCH,
-			String nOTE, String cHOP_FORM) {
+			String nOTE, String cHOP_FORM ,String fINANCIAL_DIV) {
 		super();
 		PNO = pNO;
 		DATE = dATE;
@@ -51,6 +52,7 @@ public class CHOP_CA_APPLICATION_BEAN {
 		TO_DESTROY_WATCH = tO_DESTROY_WATCH;
 		NOTE = nOTE;
 		CHOP_FORM = cHOP_FORM;
+		FINANCIAL_DIV = fINANCIAL_DIV;
 	}
 
 	public String getACT_DESTROY_DATE() {
@@ -212,7 +214,14 @@ public class CHOP_CA_APPLICATION_BEAN {
 	public void setCHOP_TYPE(String CHOP_TYPE) {
 		this.CHOP_TYPE = CHOP_TYPE;
 	}
-
+	
+	public String getFINANCIAL_DIV() {
+		return FINANCIAL_DIV;
+	}
+	
+	public void setFINANCIAL_DIV(String FINANCIAL_DIV) {
+		this.FINANCIAL_DIV = FINANCIAL_DIV;
+	}
 	@Override
 	public String toString() {
 		return "ClassPojo [ACT_DESTROY_DATE = " + ACT_DESTROY_DATE

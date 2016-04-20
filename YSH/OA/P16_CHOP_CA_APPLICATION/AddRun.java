@@ -33,25 +33,40 @@ public class AddRun extends hproc {
 	 * @throws Throwable
 	 */
 	private void doAdd() throws Throwable {
-			
-		
-		
+
 		if (!getValue("PNO").trim().isEmpty()) {
 			message("該表單已存在,請重起新單！");
-		}else if (getValue("CHOP_COMPANY").trim().isEmpty()) {
-			message("印章/電子憑證公司別！");
-		}else {
-			
+		} else if (getValue("APP_TYPE").trim().isEmpty()) {
+			message("請輸入印章/電子憑證公司別！");
+		} else if ((getValue("APP_TYPE").trim().equals("1") || getValue(
+				"APP_TYPE").trim().equals("5"))
+				&& getValue("NEW_KEEPER").trim().isEmpty()) {
+
+			message("新保管人欄位必須輸入！");
+
+		} else if ((getValue("APP_TYPE").trim().equals("2")
+				|| getValue("APP_TYPE").trim().equals("3") || getValue(
+					"APP_TYPE").trim().equals("4"))
+				&& getValue("ORIG_KEEPER").trim().isEmpty()) {
+
+			message("原保管人欄位必須輸入！");
+
+		} else if (getValue("CHOP_COMPANY").trim().isEmpty()) {
+			message("請選擇申請類別！");
+		} else if (getValue("CHOP_TODO").trim().isEmpty()) {
+			message("請輸入印章/憑證用途！");
+		} else {
+
 			String pno = getPNO(getToday("YYYYmmdd"), "CHOP_CA_APPLICATION");
 			String uploadString = "";
 			setValue("PNO", pno);
-			if (getValue("CHOP_FORM").trim().length() != 0){
+			if (getValue("CHOP_FORM").trim().length() != 0) {
 				File F1 = getUploadFile("CHOP_FORM");
 				if (F1 != null)
 					uploadString = " " + F1 + " ";
 			}
-			System.out.println("------>"+getValue("CHOP_FORM"));
-			
+			System.out.println("------>" + getValue("CHOP_FORM"));
+
 			talk t = getTalk();
 			String sql = "Insert into CHOP_CA_APPLICATION (PNO, DATE, CPNYID, EMPID, APP_TYPE, CHOP_COMPANY, ORIG_KEEPER, CHOP_NO, MATERIAL, CHOP_TYPE, CHANGE_REASON, NEW_KEEPER, CHOP_TODO, CHOP_ITEM, ACT_DESTROY_DATE, DESTROY_TYPE, TO_DESTROY, TO_DESTROY_WATCH, NOTE, CHOP_FORM"
 					+ ") VALUES ('"
@@ -69,7 +84,7 @@ public class AddRun extends hproc {
 					+ "','"
 					+ getValue("ORIG_KEEPER")
 					+ "','"
-					+ getValue("CHOP_NO") 
+					+ getValue("CHOP_NO")
 					+ "','"
 					+ getValue("MATERIAL")
 					+ "','"
@@ -87,17 +102,14 @@ public class AddRun extends hproc {
 					+ "','"
 					+ getValue("DESTROY_TYPE")
 					+ "','"
-					+ getValue("TO_DESTROY") 
-					+ "','"			
+					+ getValue("TO_DESTROY")
+					+ "','"
 					+ getValue("TO_DESTROY_WATCH")
 					+ "','"
-					+ getValue("NOTE")
-					+ "','"
-					+ uploadString				
-					+ "')";
+					+ getValue("NOTE") + "','" + uploadString + "')";
 			String now = getNow();
 			String MUSER = getUser();
-			//PNO,CPNYID,DATE,EMPID,CHOP_COMPANY,CHOP_USER,NOTE
+			// PNO,CPNYID,DATE,EMPID,CHOP_COMPANY,CHOP_USER,NOTE
 			// String boss_lv1[][] =
 			// t.queryFromPool("SELECT DEP_CHIEF FROM USER_INOFFICE_INFO_VIEW WHERE EMPID = '"+MUSER+"'");
 			// String GeneralManager[][] =

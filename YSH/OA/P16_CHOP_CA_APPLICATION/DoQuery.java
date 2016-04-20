@@ -16,6 +16,12 @@ public class DoQuery extends hproc {
 		String PNO = getValue("PNO_Q");
 		String EMPID = getValue("EMPID_Q");
 		String CPNYID = getValue("CPNYID_Q");
+		String APP_TYPE_TEXT[] = {
+				"1.新申請",
+				"2.損毀重新申請",
+				"3.加刻",
+				"4.報銷",
+				"5.移轉"};
 		String sql = "select PNO,CPNYID,DATE,EMPID,(select COCNAME from COMPANY where CPNYID = a.CHOP_COMPANY),APP_TYPE,CHOP_TYPE,(select F_INP_STAT from CHOP_CA_APPLICATION_FLOWC where PNO=a.PNO),'簽核紀錄','詳細資訊'"
 				+ " from CHOP_CA_APPLICATION a ";
 		sql += "where 1=1";
@@ -37,10 +43,15 @@ public class DoQuery extends hproc {
 		}
 		System.out.println(sql);
 		String data[][] = t.queryFromPool(sql);
+		//1.新申請2.損毀重新申請3.加刻4.報銷5.移轉
+		String[] APP_TYPE_NAME = {"1.新申請","2.損毀重新申請","3.加刻","4.報銷","5.移轉"};
+		
 		if (data.length < 1) {
 			message("查無資料!");
 		} else {
 			for (int i = 0; i < data.length; i++) {
+				data[i][5] = APP_TYPE_TEXT[Integer.parseInt(data[i][5])-1];
+				//data[i][5] = APP_TYPE_NAME[Integer.parseInt(data[i][5])-1];
 				String sqlc = "select COCNAME from COMPANY where CPNYID = '"
 						+ convert.ToSql(data[i][1].trim()) + "'";
 				String[][] ret = t.queryFromPool(sqlc);

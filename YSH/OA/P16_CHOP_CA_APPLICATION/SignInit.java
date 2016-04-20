@@ -18,9 +18,17 @@ public class SignInit extends hproc{
 			
 			String FF = getValue("CHOP_FORM");
 			if (FF.trim().length() != 0) {
-				setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:300%\" href=\"" + getDownloadURL(FF.trim())
+				setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:150%\" href=\"" + getDownloadURL(FF.trim())
 						+ "\">憑證樣式附件下載</a><br>");
 			}
+			
+			if (getState().equals("財務處主管")){
+				setVisible("FINANCIAL_DIV", true);
+				setEditable("FINANCIAL_DIV", true);
+				
+			}
+		}else{
+			setValue("CHOP_TYPE", "");
 		}
 		if (getValue("NEW_KEEPER").trim().length() != 0){
 			sql = "select HECNAME,DEP_NAME from USER_INFO_VIEW where EMPID = '"+getValue("NEW_KEEPER")+"'";
