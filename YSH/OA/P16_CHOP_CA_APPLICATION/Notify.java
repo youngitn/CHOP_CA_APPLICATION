@@ -59,10 +59,8 @@ public class Notify extends bNotify {
 				+ convert.ToSql(PNO) + "' ";
 		String backString[][] = t.queryFromPool(sqlcommString);
 		String backTitleString = "";
-		String backMemoSring = "";
 		if (backString[0][0].contains("退簽")) {
 			backTitleString = "已退簽";
-			backMemoSring = "簽核意見:" + getMemo() + "<br>";
 		} else {
 			backTitleString = "並請進入eHR系統簽核";
 		}
