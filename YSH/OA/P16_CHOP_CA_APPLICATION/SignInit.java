@@ -14,7 +14,7 @@ public class SignInit extends hproc{
 		if (POSITION == 5){
 			setVisible("SEND", false);
 			setVisible("QUERYPAGE", false);
-			setVisible("CHOP_FORM", false);
+			setVisible("CHOP_FORM", true);
 			
 			String FF = getValue("CHOP_FORM");
 			if (FF.trim().length() != 0) {

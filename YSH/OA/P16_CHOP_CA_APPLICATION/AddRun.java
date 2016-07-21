@@ -62,10 +62,12 @@ public class AddRun extends hproc {
 			setValue("PNO", pno);
 			if (getValue("CHOP_FORM").trim().length() != 0) {
 				File F1 = getUploadFile("CHOP_FORM");
-				if (F1 != null)
+				if (F1 != null){
+					
 					uploadString = " " + F1 + " ";
+				}
 			}
-			System.out.println("------>" + getValue("CHOP_FORM"));
+			System.out.println("------>" + getValue("CHOP_FORM")+"*********>>>>"+uploadString);
 
 			talk t = getTalk();
 			String sql = "Insert into CHOP_CA_APPLICATION (PNO, DATE, CPNYID, EMPID, APP_TYPE, CHOP_COMPANY, ORIG_KEEPER, CHOP_NO, MATERIAL, CHOP_TYPE, CHANGE_REASON, NEW_KEEPER, CHOP_TODO, CHOP_ITEM, ACT_DESTROY_DATE, DESTROY_TYPE, TO_DESTROY, TO_DESTROY_WATCH, NOTE, CHOP_FORM"
