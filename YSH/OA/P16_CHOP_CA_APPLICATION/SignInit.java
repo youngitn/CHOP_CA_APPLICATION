@@ -27,6 +27,13 @@ public class SignInit extends hproc{
 				setEditable("FINANCIAL_DIV", true);
 				
 			}
+			if (getState().equals("¸g¿ì")){
+				setVisible("SET_NEW_CHOP_NO", true);
+				setVisible("SAVE_CHOP_NO", true);
+				setVisible("NEW_CHOP_NO", false);
+				
+				
+			}
 		}else{
 			setValue("CHOP_TYPE", "");
 		}

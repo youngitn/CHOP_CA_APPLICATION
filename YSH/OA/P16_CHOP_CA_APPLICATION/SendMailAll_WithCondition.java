@@ -18,6 +18,7 @@ public class SendMailAll_WithCondition extends bProcFlow {
 		// 回傳值為 true 表示執行接下來的流程處理
 		// 回傳值為 false 表示接下來不執行任何流程處理
 		// 傳入值 value 為 "核准"
+			
 		String checkString = getValue("APP_TYPE").trim();
 		if (!checkString.equals("1") && !checkString.equals("5")
 				&& !checkString.equals("4")) {
@@ -26,7 +27,9 @@ public class SendMailAll_WithCondition extends bProcFlow {
 			MailService mail = new MailService(service);
 
 			String PNO = getValue("PNO").trim();
-
+			String sql = "UPDATE CHOP_CA_APPLICATION set NEW_CHOP_NO = '"+getValue("SET_NEW_CHOP_NO").trim()+"' where PNO = '"+PNO+"';";
+			System.out.println(sql);
+			t.execFromPool(sql);
 			String EMPID;
 			String name;
 			String title;

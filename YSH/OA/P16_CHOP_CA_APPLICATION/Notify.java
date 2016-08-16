@@ -1,4 +1,5 @@
 package YSH.OA.P16_CHOP_CA_APPLICATION;
+
 //YSH/OA/P16_CHOP_CA_APPLICATION/Notify;
 import jcx.jform.bNotify;
 
@@ -26,7 +27,7 @@ public class Notify extends bNotify {
 		String name = getName(EMPID);
 		talk t = getTalk();
 
-		//service.getUserInfoBean(EMPID);
+		// service.getUserInfoBean(EMPID);
 		MailService mail = new MailService(service);
 
 		Vector<String> V2 = new Vector<String>();
@@ -64,10 +65,9 @@ public class Notify extends bNotify {
 		} else {
 			backTitleString = "並請進入eHR系統簽核";
 		}
-		
-		
-		String title = "(" + EMPID + ")" + name + "之印章及電子憑證申請單( " + PNO + " ). "
-				+ backTitleString;
+
+		String title = "(" + EMPID + ")" + name + "之印章及電子憑證申請單( " + PNO
+				+ " ). " + backTitleString;
 		String content = "";
 		content += "主旨:" + title + "<br>";
 
@@ -75,11 +75,12 @@ public class Notify extends bNotify {
 		if (vid.indexOf("admin") >= 0) {
 			vid.remove("admin");
 		}
-		content = "請進入 eHR 系統簽核( <a href=\"" + HRADDR[0][0].trim() + "\">按此連結</a>)<br>";
+		content = "請進入 eHR 系統簽核( <a href=\"" + HRADDR[0][0].trim()
+				+ "\">按此連結</a>)<br>";
 		content += "=========內容摘要=========<br>";
-		content += "單號:" +  getValue("PNO") + "<br>";
-		content += "申請日期:" +  getValue("DATE") + "<br>";
-		
+		content += "單號:" + getValue("PNO") + "<br>";
+		content += "申請日期:" + getValue("DATE") + "<br>";
+
 		String usr[] = ((String[]) V2.toArray(new String[0]));
 
 		String sendRS = mail.sendMailbccUTF8(usr, title, content, null, "",
@@ -91,7 +92,7 @@ public class Notify extends bNotify {
 			message("EMAIL寄出失敗");
 		}
 		return;
-		}
+	}
 
 	public String getInformation() {
 		return "---------------\u8655\u4e3b\u7ba1.Notify()----------------";

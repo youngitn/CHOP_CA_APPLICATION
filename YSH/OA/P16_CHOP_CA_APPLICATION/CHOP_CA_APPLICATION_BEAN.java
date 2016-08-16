@@ -20,8 +20,9 @@ public class CHOP_CA_APPLICATION_BEAN {
 	private String TO_DESTROY;
 	private String TO_DESTROY_WATCH;
 	private String NOTE;
-	private String CHOP_FORM;
+	private String CHOP_FORM;	
 	private String FINANCIAL_DIV;
+	private String NEW_CHOP_NO;
 
 	
 	public CHOP_CA_APPLICATION_BEAN(String pNO, String dATE, String cPNYID,
@@ -30,7 +31,7 @@ public class CHOP_CA_APPLICATION_BEAN {
 			String cHOP_TYPE, String cHANGE_REASON, String nEW_KEEPER,
 			String cHOP_TODO, String cHOP_ITEM, String aCT_DESTROY_DATE,
 			String dESTROY_TYPE, String tO_DESTROY, String tO_DESTROY_WATCH,
-			String nOTE, String cHOP_FORM ,String fINANCIAL_DIV) {
+			String nOTE, String cHOP_FORM ,String fINANCIAL_DIV,String nEW_CHOP_NO) {
 		super();
 		PNO = pNO;
 		DATE = dATE;
@@ -52,6 +53,7 @@ public class CHOP_CA_APPLICATION_BEAN {
 		TO_DESTROY_WATCH = tO_DESTROY_WATCH;
 		NOTE = nOTE;
 		CHOP_FORM = cHOP_FORM;
+		NEW_CHOP_NO = nEW_CHOP_NO;
 		FINANCIAL_DIV = fINANCIAL_DIV;
 	}
 
@@ -214,6 +216,16 @@ public class CHOP_CA_APPLICATION_BEAN {
 	public void setCHOP_TYPE(String CHOP_TYPE) {
 		this.CHOP_TYPE = CHOP_TYPE;
 	}
+	
+	public String getNEW_CHOP_NO() {
+		return NEW_CHOP_NO;
+	}
+
+	public void setNEW_CHOP_NO(String NEW_CHOP_NO) {
+		this.NEW_CHOP_NO = NEW_CHOP_NO;
+	}
+	
+	
 	
 	public String getFINANCIAL_DIV() {
 		return FINANCIAL_DIV;

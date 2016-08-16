@@ -18,7 +18,6 @@ public class GoToDetail extends hproc{
 				
 		CHOP_CA_APPLICATION_DAO dao = new CHOP_CA_APPLICATION_DAO();
 		CHOP_CA_APPLICATION_BEAN bean = dao.getBean(getValue("table1.PNO"),t );
-		
 		setValue("PNO",bean.getPNO());
 		setValue("DATE",bean.getDATE());
 
@@ -51,6 +50,7 @@ public class GoToDetail extends hproc{
 			setValue("CHOP_FORM_DOWNLOAD", "<a style=\"font-size:150%\" href=\"" + getDownloadURL(FF.trim())
 					+ "\">憑證樣式附件下載</a><br>");
 		}
+		setValue("NEW_CHOP_NO",bean.getNEW_CHOP_NO());
 		setVisible("SEND", false);
 		setVisible("QUERYPAGE", false);
 		if (bean.getNEW_KEEPER().trim().length() != 0){
