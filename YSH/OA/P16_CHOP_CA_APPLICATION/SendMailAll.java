@@ -19,6 +19,19 @@ public class SendMailAll extends bProcFlow {
 		// 回傳值為 false 表示接下來不執行任何流程處理
 		// 傳入值 value 為 "核准"
 		talk t = getTalk();
+		
+		
+		if (getValue("APP_TYPE").trim().equals("1")){
+			String sql = "INSERT INTO CHOP_INFO (CPNYID,TYPE,CHOP_NO,KEEPER,EMPID,NOTE) "
+					+ "values ('"+getValue("CHOP_COMPANY").trim()+"',(select NAME from CHOP_CA_TYPE where ID ='"+getValue("CHOP_TYPE").trim()+"'),'"+getValue("NEW_CHOP_NO").trim()+"',"
+					+ "(select HECNAME from HRUSER where EMPID = '"+getValue("NEW_KEEPER").trim()+"')"
+					+ ",'"+getValue("NEW_KEEPER").trim()+"'"
+					+ ",'"+getValue("NOTE").trim()+"')";
+			
+			t.execFromPool(sql);	
+			System.out.println(sql);
+		}
+			
 		BaseService service = new BaseService();
 		MailService mail = new MailService(service);
 
